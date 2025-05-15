@@ -1,0 +1,12 @@
+{{- if .Values.initdb.enabled }}   # Helm Template (Go 언어)
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+  namespace: {{ .Values.mysql.namespace }}
+
+data:
+  MYSQL_DATABASE: {{ .Values.mysql.database }}
+  init.sql: |     # 멀티 라인 문자열 입력 시 필요
+{{ .Values.initdb.script | nindent 4 }}    # 들여쓰기 중요
+{{- end}}
