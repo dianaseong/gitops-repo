@@ -2,12 +2,9 @@ app:
   namespace: shopmall
   name: member-service-api
   replicas: 1
-  image: '205930651606.dkr.ecr.ap-northeast-2.amazonaws.com/member-service:latest'
-  port: 10000   # 퍄드(컨테이너화된 애플리케이션) 서비스 포트
-
-  
+  image: '205930651606.dkr.ecr.ap-northeast-2.amazonaws.com/$ECR_REGISTRY:eb24d6ee7835ce23ca0a5c20c12304d7d4d3f217'
+  port: 10000 # 퍄드(컨테이너화된 애플리케이션) 서비스 포트
   resources: {}
-  
   # resources:
   #  requests:
   #    cpu: 300m
@@ -15,14 +12,11 @@ app:
   #  limits:
   #    cpu: 300m
   #    memory: 500Mi
-
 podLabels:
   tier: backend
-
 probes:
   readiness: {}
   liveness: {}
-  
 # probes:
 #  readiness:
 #      httpGet:
@@ -36,14 +30,10 @@ probes:
 #      port: 9000
 #    initialDelaySeconds: 120
 #    periodSeconds: 10
-
-
 service:
   enabled: true
   type: ClusterIP
   port: 80
-
-
 ingress:
   enabled: true
   annotations:
@@ -53,12 +43,10 @@ ingress:
   host: ""
   path: /
   pathType: Prefix
-
-
 spring:
   profiles:
     active: dev
   datasource:
     url: jdbc:mysql://mysql.shopmall.svc.cluster.local:3306/member_db?serverTimezone=Asia/Seoul&characterEncoding=utf8
     username: root
-    password: "1234"                        
+    password: "1234"
