@@ -2,7 +2,7 @@ app:
   namespace: shopmall
   name: member-service-api
   replicas: 1
-  image: '205930651606.dkr.ecr.ap-northeast-2.amazonaws.com/member-service:6bcb874e9c308558723bb60f11e123ccb0d4bb0c'
+  image: '205930651606.dkr.ecr.ap-northeast-2.amazonaws.com/member-service:7d570058a4f4ed8595a5872fb471ae21051f8fac'
   port: 10000 # 퍄드(컨테이너화된 애플리케이션) 서비스 포트
   resources: {}
   # resources:
